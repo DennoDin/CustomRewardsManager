@@ -75,13 +75,21 @@
 
 <script>
 import axios from "axios";
+// import dotenv from "dotenv";
+// require("dotenv").config();
 
 export default {
   name: "HelloWorld",
 
   mounted: async function () {
+    // dotenv.config();
+    // const server = process.env.VUE_APP_SERVER;
+
     console.log("mounted!");
-    const result = await axios.get("/api");
+    // console.log(server);
+    const result = await axios.get(`/api`);
+    // const result = await axios.get(`${server}/api`);
+
     console.log(result);
   },
 
