@@ -25,23 +25,22 @@ export default {
   }),
   methods:{
       oauthLogin: function(event){
-          console.log(event, " oauthLogin");
-          //build authentication request URL
-          axios.request({
-              url: "/oauth2/authorize",
-              method: "get",
-              baseUrl: "https://id.twitch.tv",
-              auth: {
-                  username: process.env.VUE_APP_CLIENTID || "", 
-                  password: process.env.VUE_APP_CLIENTSECRET || "",
+          const options = {
+              method: 'GET',
+              url: 'https://id.twitch.tv/oauth2/authorize',
+              headers: {
+                  "Access-Control-Allow-Origin": "http://localhost:8080"
               },
-              data: {
-                  "grant_type": "id_and_access_token",
-                  "scope": "openid"
+              params: {
+                  client_id: process.env.VUE_APP_CLIENTID || "",
+                  redirect_uri: "http://localhost:8080",
+                  response_type: "id_token",
+                  scope: "open_id",
+                  claims: ""
               }
-          }).then(response => {
-              console.log("response", response);
-          });
+          }
+          
+          axios.request(options)
 
           //start with authorization URL
           //add client id
