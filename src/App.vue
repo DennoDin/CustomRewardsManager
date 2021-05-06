@@ -38,7 +38,9 @@
     </v-app-bar>
 
     <v-main>
-      <Login/>
+      <v-content tag="Login" v-if=!authenticated>
+        <Login/>
+      </v-content>
     </v-main>
   </v-app>
 </template>
@@ -54,7 +56,7 @@ export default {
   },
 
   data: () => ({
-    //
+    authenticated: false,
   }),
 };
 </script>
