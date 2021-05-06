@@ -38,21 +38,28 @@
     </v-app-bar>
 
     <v-main>
-      <v-content tag="Login" v-if=!authenticated>
+      <div tag="Login" v-if=!authenticated>
         <Login/>
-      </v-content>
+      </div>
+      <div v-if=authenticated>
+        Search Component
+        <v-spacer/>
+        <Search-User/>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import Login from './components/Login';
+import SearchUser from './components/SearchUser'
 
 export default {
   name: 'App',
 
   components: {
     Login,
+    SearchUser,
   },
 
   data: () => ({
