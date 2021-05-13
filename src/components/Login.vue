@@ -16,10 +16,13 @@ export default {
     // console.log("mounted!");
     // const result = await axios.get(`/api`);
     // console.log(result);
+
+    this.token = window.location.hash.substring(10);
   },
 
   data: () => ({
-    twitchOAuthRegisterURL: ""
+    twitchOAuthRegisterURL: "",
+    token: "",
   }),
   methods:{
   }
