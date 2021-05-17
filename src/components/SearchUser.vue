@@ -1,7 +1,10 @@
 <template>
     <div>
-        <v-text-field v-bind=username input label="Check Status of a User"/>
-        <v-btn>Search</v-btn>
+        <v-card>
+            <v-card-title>Search for Twitch ID</v-card-title>
+            <v-text-field v-bind=username input label="Enter User ID"/>
+            <v-btn>Search</v-btn>
+        </v-card>
     </div>
 </template>
 <script>
