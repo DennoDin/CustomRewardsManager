@@ -1,6 +1,14 @@
 <template>
   <v-container>
-      <v-btn :href=twitchOAuthRegisterURL>Login A Href</v-btn>
+    <v-card>
+      <v-card-title>
+        Login
+      </v-card-title>
+      <v-card-subtitle>
+        Please Login to access Twitch API features
+      </v-card-subtitle>
+      <v-btn color="primary" :href=twitchOAuthRegisterURL>Twitch Login</v-btn>
+    </v-card>
   </v-container>
 </template>
 
