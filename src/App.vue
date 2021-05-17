@@ -13,8 +13,6 @@
         <Login/>
       </div>
       <div v-if=authenticated>
-        Search Component
-        <v-spacer/>
         <Search-User/>
       </div>
     </v-main>
