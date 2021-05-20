@@ -13,7 +13,7 @@
         <Login v-bind:updateCreds="updateCreds"/>
       </div>
       <div v-if=isAuthenticated>
-        <Search-User/>
+        <Search-User v-bind:creds="credentials"/>
       </div>
     </v-main>
   </v-app>
