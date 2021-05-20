@@ -2,8 +2,8 @@
     <div>
         <v-card>
             <v-card-title>Search for Twitch ID</v-card-title>
-            <v-text-field v-bind=username input label="Enter User ID"/>
-            <v-btn>Search</v-btn>
+            <v-text-field v-model="searchHandle" input label="Enter User ID"/>
+            <v-btn v-on:click="searchUser(searchHandle)">Search</v-btn>
         </v-card>
     </div>
 </template>
@@ -11,7 +11,15 @@
 export default {
     name: "SearchUser",
     data: () => ({
-        username: ""
+        searchHandle: ""
     }),
+    props: { 
+        creds: Object,
+    },
+    methods:{
+        searchUser(userName){
+            console.log(userName)
+        }
+    }
 }
 </script>
