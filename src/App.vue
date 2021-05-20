@@ -9,10 +9,10 @@
     </v-app-bar>
 
     <v-main>
-      <div tag="Login" v-if=!authenticated>
+      <div tag="Login" v-if=!isAuthenticated>
         <Login v-bind:updateCreds="updateCreds"/>
       </div>
-      <div v-if=authenticated>
+      <div v-if=isAuthenticated>
         <Search-User/>
       </div>
     </v-main>
@@ -32,14 +32,14 @@ export default {
   },
 
   data: () => ({
-    authenticated: false,
+    isAuthenticated: false,
     credentials: {},  //store credentials in cookies at a later point
   }),
   methods:{
     updateCreds(returnedCredentials){
       if(Object.keys(returnedCredentials).length > 0){
         Object.assign(this.credentials, returnedCredentials)
-        this.authenticated = true;
+        this.isAuthenticated = true;
       }
     }
   }
