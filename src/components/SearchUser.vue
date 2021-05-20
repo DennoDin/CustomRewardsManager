@@ -8,6 +8,8 @@
     </div>
 </template>
 <script>
+import axios from "axios"
+
 export default {
     name: "SearchUser",
     data: () => ({
@@ -18,7 +20,22 @@ export default {
     },
     methods:{
         searchUser(userName){
-            console.log(userName)
+            if(!userName){
+                console.error("No username provided");
+                return;
+            }
+            const options = {
+                method: 'GET',
+                url: 'https//api.twitch.tv/helix/search/channels',
+                params: { query: userName },
+                headers: {
+                    'client-id': process.env.VUE_APP_CLIENTID,
+                    Authorization: `${this.creds.token_type} ${this.creds.access_token}`
+                }
+            }
+
+            axios.request(options)
+            .then((response)=> console.log(response));
         }
     }
 }
