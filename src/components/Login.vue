@@ -29,8 +29,9 @@ export default {
     for(let pair of urlFragment.entries()) {
       this.fragmentResults[pair[0]] =  pair[1];
     }
+    this.updateCreds(this.fragmentResults)
   },
-
+  props:['updateCreds'],
   data: () => ({
     twitchOAuthRegisterURL: "",
     fragmentResults: {},
