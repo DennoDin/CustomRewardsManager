@@ -26,7 +26,7 @@ export default {
             }
             const options = {
                 method: 'GET',
-                url: 'https//api.twitch.tv/helix/search/channels',
+                url: 'https://api.twitch.tv/helix/search/channels',
                 params: { query: userName },
                 headers: {
                     'client-id': process.env.VUE_APP_CLIENTID,
