@@ -13,7 +13,8 @@ import axios from "axios"
 export default {
     name: "SearchUser",
     data: () => ({
-        searchHandle: ""
+        searchHandle: "",
+        searchResults: {},
     }),
     props: { 
         creds: Object,
@@ -35,7 +36,7 @@ export default {
             }
 
             axios.request(options)
-            .then((response)=> console.log(response));
+            .then((response)=> this.searchResults = response.data);
         }
     }
 }
