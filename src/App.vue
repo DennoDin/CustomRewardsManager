@@ -41,6 +41,9 @@ export default {
         Object.assign(this.credentials, returnedCredentials)
         this.isAuthenticated = true;
       }
+      if(this.credentials.token_type === "bearer"){
+        this.credentials.token_type = "Bearer"
+      }
     }
   }
 };
