@@ -3,7 +3,7 @@
         <v-card class="pa-md-5">
             <v-card-title>Search for Twitch ID</v-card-title>
             <v-text-field v-model="searchHandle" input label="Enter User ID"/>
-            <v-btn v-on:click="searchUser(searchHandle)">Search</v-btn>
+            <v-btn v-on:click="searchChannel(searchHandle)">Search</v-btn>
         </v-card>
         <v-container fluid pa-md-5>
             <v-row v-if="matchFound" class="pa-md-5">
@@ -36,7 +36,7 @@
 import axios from "axios"
 
 export default {
-    name: "SearchUser",
+    name: "SearchChannel",
     data: () => ({
         searchHandle: "",
         searchResults: [],
@@ -47,7 +47,7 @@ export default {
         creds: Object,
     },
     methods:{
-        searchUser(userName){
+        searchChannel(userName){
             if(!userName){
                 console.error("No username provided");
                 return;

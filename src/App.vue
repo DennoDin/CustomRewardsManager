@@ -13,7 +13,7 @@
         <Login v-bind:updateCreds="updateCreds"/>
       </div>
       <div v-if=isAuthenticated>
-        <Search-User v-bind:creds="credentials"/>
+        <Search-Channel v-bind:creds="credentials"/>
       </div>
     </v-main>
   </v-app>
@@ -21,14 +21,14 @@
 
 <script>
 import Login from './components/Login';
-import SearchUser from './components/SearchUser'
+import SearchChannel from './components/SearchChannel'
 
 export default {
   name: 'App',
 
   components: {
     Login,
-    SearchUser,
+    SearchChannel,
   },
 
   data: () => ({
