@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <v-card>
+    <div class="pa-md-5">
+        <v-card class="pa-md-5">
             <v-card-title>Search for Twitch ID</v-card-title>
             <v-text-field v-model="searchHandle" input label="Enter User ID"/>
             <v-btn v-on:click="searchUser(searchHandle)">Search</v-btn>
         </v-card>
-        <v-container fluid>
-            <v-row v-if="matchFound">
+        <v-container fluid pa-md-5>
+            <v-row v-if="matchFound" class="pa-md-5">
                 <v-card :href="`https://twitch.tv/${perfectMatch.display_name}`">
                     <v-card-title>
                         {{perfectMatch.display_name}}
@@ -18,7 +18,7 @@
                     </v-img>
                 </v-card>
             </v-row>
-            <div v-if="searchResults.length > 0">
+            <div v-if="searchResults.length > 0" class="pa-md-1">
                 Close Matches:
                 <v-row>
                     <v-col v-for="channel of searchResults" :key="channel.display_name" cols="auto">
