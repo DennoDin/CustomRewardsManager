@@ -14,7 +14,8 @@ export default {
     name: "SearchUser",
     data: () => ({
         searchHandle: "",
-        searchResults: {},
+        searchResults: [],
+        perfectMatch: {},
     }),
     props: { 
         creds: Object,
@@ -36,7 +37,14 @@ export default {
             }
 
             axios.request(options)
-            .then((response)=> this.searchResults = response.data);
+            .then((response)=> {
+                this.searchResults = response.data.data;
+                
+                const pMIndex = this.searchResults.findIndex(channel => channel.display_name.toLowerCase() === this.searchHandle.toLowerCase())
+                if (pMIndex > -1){
+                    this.perfectMatch = this.searchResults.splice(pMIndex, 1)[0];
+                }
+            });
         }
     }
 }
