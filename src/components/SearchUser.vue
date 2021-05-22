@@ -18,12 +18,17 @@
                     </v-img>
                 </v-card>
             </v-row>
-            Close Matches:
-            <v-row>
-                <v-col>
-                    <v-card>Match</v-card>
-                </v-col>
-            </v-row>
+            <div v-if="searchResults.length > 0">
+                Close Matches:
+                <v-row>
+                    <v-col v-for="channel of searchResults" :key="channel.display_name" cols="auto">
+                        <v-card height="150px" min-width="200px">
+                            <v-card-title v-text="channel.display_name"></v-card-title>
+                            <v-img :src="channel.thumbnail_url" max-width="75px"></v-img>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </div>
         </v-container>
     </div>
 </template>
@@ -35,8 +40,8 @@ export default {
     data: () => ({
         searchHandle: "",
         searchResults: [],
-        perfectMatch: {},
         matchFound: false,
+        perfectMatch: {},
     }),
     props: { 
         creds: Object,
