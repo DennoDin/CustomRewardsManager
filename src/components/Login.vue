@@ -19,7 +19,10 @@ export default {
   name: "Login",
 
   mounted: async function () {
-    this.twitchOAuthRegisterURL = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_CLIENTID}&redirect_uri=http://localhost:8080&response_type=token+id_token&scope=openid`
+    const SCOPES = ["openid", "channel:manage:redemptions"];
+    const REDIRECT = "http://localhost:8080"
+    const RESPONSE_TYPE = "token+id_token"
+    this.twitchOAuthRegisterURL = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_CLIENTID}&redirect_uri=${REDIRECT}&response_type=${RESPONSE_TYPE}&scope=${SCOPES.join("%20")}`
 
     // console.log("mounted!");
     // const result = await axios.get(`/api`);
