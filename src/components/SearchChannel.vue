@@ -60,6 +60,7 @@ export default {
         searchChannel(userName){
             if(!userName){
                 console.error("No username provided");
+                this.resetData();
                 return;
             }
             const options = {
@@ -85,6 +86,12 @@ export default {
                     this.matchFound = false;
                 }
             });
+        },
+        resetData(){
+            this.searchHandle = "";
+            this.searchResults = [];
+            this.matchFound = false;
+            this.perfectMatch = {};
         }
     }
 }
