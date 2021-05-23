@@ -7,25 +7,31 @@
         </v-card>
         <v-container fluid pa-md-5>
             <v-row v-if="matchFound" class="pa-md-5">
-                <v-card :href="`https://twitch.tv/${perfectMatch.display_name}`">
-                    <v-card-title>
-                        {{perfectMatch.display_name}}
-                    </v-card-title>
-                    <v-card-subtitle>
-                        {{perfectMatch.isLive ? `Live! ${perfectMatch.game_name} : ${perfectMatch.title}` : "Offline"}}
-                    </v-card-subtitle>
-                    <v-img contain :src="perfectMatch.thumbnail_url" max-width="200px" position="25% 25%">
-                    </v-img>
-                </v-card>
+                <channel-card
+                    :isPerfectMatch="true"
+                    :key="perfectMatch.display_name"
+                    :displayName="perfectMatch.display_name"
+                    :handle="perfectMatch.broadcaster_login"
+                    :isLive="perfectMatch.is_live"
+                    :gameName="perfectMatch.game_name"
+                    :streamTitle="perfectMatch.title"
+                    :img="perfectMatch.thumbnail_url"
+                    :dimensions="{maxWidth:`300px`}"
+                />
             </v-row>
             <div v-if="searchResults.length > 0" class="pa-md-1">
                 Close Matches:
                 <v-row>
-                    <v-col v-for="channel of searchResults" :key="channel.display_name" cols="auto">
-                        <v-card height="150px" min-width="200px">
-                            <v-card-title v-text="channel.display_name"></v-card-title>
-                            <v-img :src="channel.thumbnail_url" max-width="75px"></v-img>
-                        </v-card>
+                    <v-col v-for="channel of searchResults"
+                        :key="channel.display_name"
+                        cols="auto"
+                    >
+                        <channel-card
+                            :displayName="channel.display_name"
+                            :handle="channel.broadcaster_login"
+                            :img="channel.thumbnail_url"
+                            :dimensions="{height:`150px`, minWidth:`200px`, maxWidth:`75px`}"
+                        />
                     </v-col>
                 </v-row>
             </div>
@@ -34,9 +40,13 @@
 </template>
 <script>
 import axios from "axios"
+import ChannelCard from "./ChannelCard"
 
 export default {
     name: "SearchChannel",
+    components: {
+        ChannelCard,
+    },
     data: () => ({
         searchHandle: "",
         searchResults: [],
