@@ -69,7 +69,7 @@ export default {
                 params: { query: userName },
                 headers: {
                     'client-id': process.env.VUE_APP_CLIENTID,
-                    Authorization: `${this.creds.token_type} ${this.creds.access_token}`
+                    Authorization: `${this.$store.state.credentials.token_type} ${this.$store.state.credentials.access_token}`
                 }
             }
 

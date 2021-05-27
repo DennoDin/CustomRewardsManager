@@ -32,6 +32,9 @@ export default {
     for(let pair of urlFragment.entries()) {
       this.fragmentResults[pair[0]] =  pair[1];
     }
+    if(this.fragmentResults.token_type && this.fragmentResults.token_type === 'bearer'){
+      this.fragmentResults.token_type = "Bearer"
+    }
     if(Object.keys(this.fragmentResults).length){
       this.updateCredentials(this.fragmentResults)
     }
@@ -44,7 +47,6 @@ export default {
     updateCredentials(returnedCreds){
       this.$store.commit('saveCredentials', returnedCreds)
       this.$store.commit('toggleLogin')
-      console.log(this.$store.state);
     }
   }
 };
