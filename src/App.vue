@@ -9,10 +9,10 @@
     </v-app-bar>
 
     <v-main>
-      <div tag="Login" v-if=!isAuthenticated>
+      <div tag="Login" v-if=!isLoggedIn>
         <Login v-bind:updateCreds="updateCreds"/>
       </div>
-      <div v-if=isAuthenticated>
+      <div v-if=isLoggedIn>
         <Search-Channel v-bind:creds="credentials"/>
       </div>
     </v-main>
@@ -44,6 +44,11 @@ export default {
       if(this.credentials.token_type === "bearer"){
         this.credentials.token_type = "Bearer"
       }
+    }
+  },
+  computed:{
+    isLoggedIn(){
+      return this.$store.state.isLoggedIn
     }
   }
 };
