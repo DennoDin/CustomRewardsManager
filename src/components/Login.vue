@@ -32,14 +32,20 @@ export default {
     for(let pair of urlFragment.entries()) {
       this.fragmentResults[pair[0]] =  pair[1];
     }
-    this.updateCreds(this.fragmentResults)
+    if(Object.keys(this.fragmentResults).length){
+      this.updateCredentials(this.fragmentResults)
+    }
   },
-  props:['updateCreds'],
   data: () => ({
     twitchOAuthRegisterURL: "",
     fragmentResults: {},
   }),
   methods:{
+    updateCredentials(returnedCreds){
+      this.$store.commit('saveCredentials', returnedCreds)
+      this.$store.commit('toggleLogin')
+      console.log(this.$store.state);
+    }
   }
 };
 </script>

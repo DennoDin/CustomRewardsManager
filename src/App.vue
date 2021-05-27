@@ -10,7 +10,7 @@
 
     <v-main>
       <div tag="Login" v-if=!isLoggedIn>
-        <Login v-bind:updateCreds="updateCreds"/>
+        <Login/>
       </div>
       <div v-if=isLoggedIn>
         <Search-Channel v-bind:creds="credentials"/>
