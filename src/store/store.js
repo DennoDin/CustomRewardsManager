@@ -13,11 +13,8 @@ export default new Vuex.Store({
         toggleLogin(state){
             state.isLoggedIn = !state.isLoggedIn;
         },
-        // saveCredentials(state, returnedCreds){
-        //     return state;
-        // }
+        saveCredentials(state, returnedCreds){
+            state.credentials = returnedCreds;
+        },
     },
-    getters:{
-        login: state => state.isLoggedIn
-    }
 })
