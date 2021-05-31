@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <login/>
-    <search-channel/>
+    <login v-if=!isLoggedIn />
+    <search-channel v-if=isLoggedIn />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     Login,
     SearchChannel
+  },
+  computed: {
+    isLoggedIn() { 
+      return this.$store.state.isLoggedIn;
+      }
   }
 }
 </script>
