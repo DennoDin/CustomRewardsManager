@@ -23,6 +23,7 @@
             if(Object.keys(this.fragmentResults).length){
                 this.updateCredentials(this.fragmentResults)
             }
+            this.$router.push('/')
         },
         methods:{
             updateCredentials(returnedCreds){
