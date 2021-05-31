@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <v-app id="app">
+    <v-app-bar app color="primary" dark id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    </v-app-bar>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <style lang="scss">
@@ -18,7 +20,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 0px;
 
   a {
     font-weight: bold;
