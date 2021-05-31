@@ -20,7 +20,7 @@ export default {
 
   mounted: async function () {
     const SCOPES = ["openid", "channel:manage:redemptions"];
-    const REDIRECT = "http://localhost:8080"
+    const REDIRECT = "http://localhost:8080/redirect"
     const RESPONSE_TYPE = "token+id_token"
     this.twitchOAuthRegisterURL = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.VUE_APP_CLIENTID}&redirect_uri=${REDIRECT}&response_type=${RESPONSE_TYPE}&scope=${SCOPES.join("%20")}`
 
