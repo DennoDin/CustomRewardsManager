@@ -1,38 +1,34 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <span>TSTKT</span>
+  <v-app id="app">
+    <v-app-bar app color="primary" dark id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </v-app-bar>
-
     <v-main>
-      <div tag="Login" v-if="!isLoggedIn">
-        <Login />
-      </div>
-      <div v-if="isLoggedIn">
-        <Search-Channel />
-      </div>
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
-<script>
-import Login from "./components/Login";
-import SearchChannel from "./components/SearchChannel";
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  name: "App",
+#nav {
+  padding: 0px;
 
-  components: {
-    Login,
-    SearchChannel,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  data: () => ({}),
-  methods: {},
-  computed: {
-    isLoggedIn() {
-      return this.$store.state.isLoggedIn;
-    },
-  },
-};
-</script>
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>
