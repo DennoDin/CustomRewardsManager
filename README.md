@@ -20,5 +20,7 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Use ngrok for local dev
+```
+ngrok http 8080 --host-header=rewrite
+```
